@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.Media.Playback;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -36,10 +37,12 @@ namespace TicTacToe
         {
             this.InitializeComponent();
             playMusic();
+            GameBoard.Background = AliceBlue;
         }
         private void buttonClick(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
+          
 
             if (turn == true)
             {
@@ -84,6 +87,7 @@ namespace TicTacToe
             else if ((A3.Content == B2.Content) && (B2.Content == C1.Content) && (!C1.IsEnabled))
                 gameIsWon = true;
 
+            //game end
             if (gameIsWon == true)
             {
                 disableButtons();
@@ -128,6 +132,7 @@ namespace TicTacToe
             GameBoard.Background = black;
 
         }
+        //new game button
         private void ngButton(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
@@ -159,6 +164,7 @@ namespace TicTacToe
             currentTurn.Text = "O";
             GameBoard.Background = AliceBlue;
         }
+        //reset button
         private void resetButton(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
@@ -199,6 +205,7 @@ namespace TicTacToe
 
 
         }
+        //media player
           private void playMusic()
         {
             var mediaPlayer = new MediaPlayer();
@@ -210,17 +217,16 @@ namespace TicTacToe
 
         private void saveButton(object sender, RoutedEventArgs e)
         {
-             Windows.Storage.ApplicationDataContainer localSettings =
-             Windows.Storage.ApplicationData.Current.LocalSettings;
-             Windows.Storage.StorageFolder localFolder =
-             Windows.Storage.ApplicationData.Current.LocalFolder;
-            Object xWinCount = localSettings.Values["xTotalWins"];
-            Object oWinCount = localSettings.Values["oTotalWins"];
-            Object drawCount = localSettings.Values["TotalDraws"];
-            
+            ApplicationDataContainer localSetting = ApplicationData.Current.LocalSettings;
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            localSettings.Values["X Score"] = xWinCount.ToString();
+            localSettings.Values["O Score"] = oWinCount.ToString();
+            localSettings.Values["Draw Score"] = drawCount.ToString();
+
         }
-      
+
+
     }
-       
-    }
+
+}
     
