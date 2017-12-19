@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="TicTacToe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TicTacToe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MinHeight="650" MinWidth="500">
+
+    <Grid x:Name="MainGrid" Width="Auto" Height="Auto">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF57B947" Offset="0"/>
+                <GradientStop Color="#FF34ABFF" Offset="1"/>
+                <GradientStop Color="#FF6BBB89" Offset="0.233"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock FontSize="50" FontWeight="Bold" HorizontalAlignment="Center">Tic Tac Toe</TextBlock>
+        <StackPanel   Orientation="Horizontal" Margin="0,0,10,882">
+
+        </StackPanel>
+
+        <Grid Background="AliceBlue" Margin="50,123,50,50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <!-- >Grid lines </!-->
+            <Path Grid.ColumnSpan="10" Data="M0,72 L168,72" Fill="#FFF4F4F5" Height="1" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom"/>
+            <Path Grid.ColumnSpan="10" Data="M0,72 L168,72" Fill="#FFF4F4F5" Height="1" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" Grid.Row="1"/>
+            <Path Grid.ColumnSpan="10" Data="M0,72 L168,72" Fill="#FFF4F4F5" Height="1" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" Grid.Row="2"/>
+            <Path Grid.ColumnSpan="10" Data="M0,72 L168,72" Fill="#FFF4F4F5" Height="1" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" Grid.Row="3"/>
+            <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10"/>
+            <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10" Grid.Column="1"/>
+            <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10" Grid.Column="2"/>
+            <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10" Grid.Column="3"/>
+
+            <Button Name="a1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="a2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="a3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+
+            <Button Name="b1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="b2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="b3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            
+            <Button Name="c1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="c2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button Name="c3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+
+
+        </Grid>
+    </Grid>
+    <!-->Main Grid<!-->
+
+
+</Page>
