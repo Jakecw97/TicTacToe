@@ -186,7 +186,7 @@ namespace TicTacToe
             xWinCount = 0;
             oWinCount = 0;
             drawCount = 0;
-            
+
             xWins.Text = xWinCount.ToString();
             oWins.Text = oWinCount.ToString();
             drawS.Text = drawCount.ToString();
@@ -195,5 +195,13 @@ namespace TicTacToe
 
 
         }
+        private void saveButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void muteButton(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
-}
+    }
