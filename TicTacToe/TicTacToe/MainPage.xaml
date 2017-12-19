@@ -5,9 +5,11 @@
     xmlns:local="using:TicTacToe"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    MinHeight="650" MinWidth="500">
+    MinHeight="650" MinWidth="500"
+    >
 
     <Grid x:Name="MainGrid" Width="Auto" Height="Auto">
+
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF57B947" Offset="0"/>
@@ -15,12 +17,23 @@
                 <GradientStop Color="#FF6BBB89" Offset="0.233"/>
             </LinearGradientBrush>
         </Grid.Background>
+
         <TextBlock FontSize="50" FontWeight="Bold" HorizontalAlignment="Center">Tic Tac Toe</TextBlock>
-        <StackPanel   Orientation="Horizontal" Margin="0,0,10,882">
+        <TextBlock FontSize="30" FontStyle="Italic" HorizontalAlignment="Center" Name="winnerText" VerticalAlignment="Top" Margin="0,65,180,0" Text="Winner is: "/>
+        <Button Content="New Game" HorizontalAlignment="Left" Margin="50,80,0,0" Click="ngButton" VerticalAlignment="Top" Height="31" Width="100"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="155,80,0,0" Click="resetButton" VerticalAlignment="Top" Height="31" Width="100"/>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,10,70,0">
+            <TextBlock FontSize="40"  Text="X" HorizontalAlignment="Right" Margin="20,0"/>
+            <TextBlock FontSize="40"  Text="O" HorizontalAlignment="Right" Margin="20,0"/>
+            <TextBlock FontSize="40"  Text="Draw" HorizontalAlignment="Right" Margin="20,0"/>
 
         </StackPanel>
-
-        <Grid Background="AliceBlue" Margin="50,123,50,50">
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,60,125,0">
+            <TextBlock Name="xWins" FontSize="40"  Text="0"  Margin="20,0"/>
+            <TextBlock Name="oWins" FontSize="40"  Text="0"  Margin="26,0"/>
+            <TextBlock Name="drawS" FontSize="40"  Text="0"  Margin="25,0"/>
+        </StackPanel>
+        <Grid Name="GameBoard" Background="AliceBlue" Margin="50,123,50,50">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
@@ -41,20 +54,24 @@
             <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10" Grid.Column="2"/>
             <Path Data="M275.33333,-163 L275.33333,-21.667" Fill="#FFF4F4F5" HorizontalAlignment="Right" Stretch="Fill" Stroke="Black" Width="1" Grid.RowSpan="10" Grid.Column="3"/>
 
-            <Button Name="a1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="a2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="a3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="A1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="A2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="A3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
 
-            <Button Name="b1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="b2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="b3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            
-            <Button Name="c1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="c2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
-            <Button Name="c3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="B1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="B2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="B3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+
+            <Button x:Name="C1" Click="buttonClick" FontSize="48" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="C2" Click="buttonClick" FontSize="48" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
+            <Button x:Name="C3" Click="buttonClick" FontSize="48" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content=""/>
 
 
         </Grid>
+        <StackPanel Orientation="Horizontal" Margin="100,24,0,-16">
+            <TextBlock FontSize="40"  Text="Current Turn:" />
+            <TextBlock FontSize="40"  Text="" x:Name="currentTurn"/>
+        </StackPanel>
     </Grid>
     <!-->Main Grid<!-->
 

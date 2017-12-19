@@ -23,7 +23,11 @@ namespace TicTacToe
     public sealed partial class MainPage : Page
     {
         bool turn = true; //True O turn false X turn
-        int xWinCount, oWinCount, drawCount;
+
+
+        int xWinCount, oWinCount, drawCount, turnCount;
+        Brush black;
+        Brush AliceBlue;
 
         public MainPage()
         {
@@ -36,68 +40,160 @@ namespace TicTacToe
             if (turn == true)
             {
                 b.Content = "O";
+                currentTurn.Text = "X";
             }
             else
             {
                 b.Content = "X";
+                currentTurn.Text = "O";
             }
             b.IsEnabled = false;
             turn = !turn;
             winnerCheck();
+            turnCount++;
         }
         private void winnerCheck()
         {
             bool gameIsWon = false;
+            //Horizontal checks
+            if ((A1.Content == A2.Content) && (A2.Content == A3.Content) && (!A1.IsEnabled))
+                gameIsWon = true;
+            else if ((B1.Content == B2.Content) && (B2.Content == B3.Content) && (!B1.IsEnabled))
+                gameIsWon = true;
+            else if ((C1.Content == C2.Content) && (C2.Content == C3.Content) && (!C1.IsEnabled))
+                gameIsWon = true;
 
-            if ((a1.Content == a2.Content) && (a2.Content == a3.Content))
-            {
+
+            //vertical checks
+
+            else if ((A1.Content == B1.Content) && (B1.Content == C1.Content) && (!A1.IsEnabled))
                 gameIsWon = true;
-            }
-           else if ((b1.Content == b2.Content) && (b2.Content == b3.Content))
-            {
+            else if ((A2.Content == B2.Content) && (B2.Content == C2.Content) && (!A2.IsEnabled))
                 gameIsWon = true;
-            }
-            else if((c1.Content == c2.Content) && (c2.Content == a3.Content))
-            {
+            else if ((A3.Content == B3.Content) && (B3.Content == C3.Content) && (!A3.IsEnabled))
                 gameIsWon = true;
-            }
-            else if((a1.Content == b1.Content) && (b1.Content == c1.Content))
-            {
+
+            //diagonal checks
+
+            else if ((A1.Content == B2.Content) && (B2.Content == C3.Content) && (!A1.IsEnabled))
                 gameIsWon = true;
-            }
-            else if ((a2.Content == b2.Content) && (b1.Content == c2.Content))
-            {
+            else if ((A3.Content == B2.Content) && (B2.Content == C1.Content) && (!C1.IsEnabled))
                 gameIsWon = true;
-            }
-            else if((a3.Content == b3.Content) && (b3.Content == c3.Content))
-            {
-                gameIsWon = true;
-            }
 
             if (gameIsWon == true)
             {
+                disableButtons();
                 String winner;
-                if (turn == true)
+                if (turn != true)
                 {
                     winner = "O";
                     oWinCount++;
+                    oWins.Text = oWinCount.ToString();
+                    winnerText.Text += winner;
                 }
                 else
                 {
                     winner = "X";
                     xWinCount++;
+                    winnerText.Text += winner;
+                    xWins.Text = xWinCount.ToString();
+                }
+            }
+            else
+            {
+                if (turnCount == 8)
+                {
+                    ++drawCount;
+                    drawS.Text = drawCount.ToString();
+
                 }
             }
         }
-        private async void youWin()
+        private void disableButtons()
         {
-            // Call app specific code to subscribe to the service. For example:
-            ContentDialog submitDialog = new ContentDialog
-            {
-                Title = "Congratulations!",
-                Content = "You win!",
-                PrimaryButtonText = "Yay",
-            };
+
+            A1.IsEnabled = false;
+            A2.IsEnabled = false;
+            A3.IsEnabled = false;
+            B1.IsEnabled = false;
+            B2.IsEnabled = false;
+            B3.IsEnabled = false;
+            C1.IsEnabled = false;
+            C2.IsEnabled = false;
+            C3.IsEnabled = false;
+            GameBoard.Background = black;
+
+        }
+        private void ngButton(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+
+            turn = true;
+            turnCount = 0;
+
+            A1.IsEnabled = true;
+            A2.IsEnabled = true;
+            A3.IsEnabled = true;
+            B1.IsEnabled = true;
+            B2.IsEnabled = true;
+            B3.IsEnabled = true;
+            C1.IsEnabled = true;
+            C2.IsEnabled = true;
+            C3.IsEnabled = true;
+
+
+            A1.Content = "";
+            A2.Content = "";
+            A3.Content = "";
+            B1.Content = "";
+            B2.Content = "";
+            B3.Content = "";
+            C1.Content = "";
+            C2.Content = "";
+            C3.Content = "";
+            winnerText.Text = "Winner is: ";
+            currentTurn.Text = "O";
+            GameBoard.Background = AliceBlue;
+        }
+        private void resetButton(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+
+            turn = true;
+            turnCount = 0;
+
+            A1.IsEnabled = true;
+            A2.IsEnabled = true;
+            A3.IsEnabled = true;
+            B1.IsEnabled = true;
+            B2.IsEnabled = true;
+            B3.IsEnabled = true;
+            C1.IsEnabled = true;
+            C2.IsEnabled = true;
+            C3.IsEnabled = true;
+
+
+            A1.Content = "";
+            A2.Content = "";
+            A3.Content = "";
+            B1.Content = "";
+            B2.Content = "";
+            B3.Content = "";
+            C1.Content = "";
+            C2.Content = "";
+            C3.Content = "";
+            GameBoard.Background = AliceBlue;
+            xWinCount = 0;
+            oWinCount = 0;
+            drawCount = 0;
+            
+            xWins.Text = xWinCount.ToString();
+            oWins.Text = oWinCount.ToString();
+            drawS.Text = drawCount.ToString();
+            winnerText.Text = "Winner is: ";
+            currentTurn.Text = "O";
+
+
         }
     }
 }
