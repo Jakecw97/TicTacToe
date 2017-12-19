@@ -17,13 +17,13 @@
                 <GradientStop Color="#FF6BBB89" Offset="0.233"/>
             </LinearGradientBrush>
         </Grid.Background>
-
+        <MediaElement x:Name="myPlayer"
+            AutoPlay="True" />
         <TextBlock FontSize="50" FontWeight="Bold" HorizontalAlignment="Center">Tic Tac Toe</TextBlock>
         <TextBlock FontSize="30" FontStyle="Italic" HorizontalAlignment="Center" Name="winnerText" VerticalAlignment="Top" Margin="0,65,180,0" Text="Winner is: "/>
         <Button Content="New Game" HorizontalAlignment="Left" Margin="50,80,0,0" Click="ngButton" VerticalAlignment="Top" Height="31" Width="100"/>
         <Button Content="Reset" HorizontalAlignment="Left" Margin="155,80,0,0" Click="resetButton" VerticalAlignment="Top" Height="31" Width="100"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="260,80,0,0" Click="saveButton" VerticalAlignment="Top" Height="31" Width="100"/>
-        <ToggleButton VerticalAlignment="Top" Content="Mute" Click="muteButton" HorizontalAlignment="Left" Margin="365,80,0,0" Height="31" Width="57"/>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,10,70,0">
             <TextBlock FontSize="40"  Text="X" HorizontalAlignment="Right" Margin="20,0"/>
             <TextBlock FontSize="40"  Text="O" HorizontalAlignment="Right" Margin="20,0"/>
@@ -70,8 +70,8 @@
 
 
         </Grid>
-        <StackPanel Orientation="Horizontal" Margin="100,24,0,-16">
-            <TextBlock FontSize="40"  Text="Current Turn:" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="100,24,0,-16">
+            <TextBlock FontSize="40"  Text="Current Turn:" Height="50"/>
             <TextBlock FontSize="40"  Text="" x:Name="currentTurn"/>
         </StackPanel>
     </Grid>

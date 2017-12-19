@@ -5,12 +5,15 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.Media.Playback;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -32,6 +35,7 @@ namespace TicTacToe
         public MainPage()
         {
             this.InitializeComponent();
+            playMusic();
         }
         private void buttonClick(object sender, RoutedEventArgs e)
         {
@@ -195,13 +199,28 @@ namespace TicTacToe
 
 
         }
+          private void playMusic()
+        {
+            var mediaPlayer = new MediaPlayer();
+            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/thinkingMusic.mp3", UriKind.RelativeOrAbsolute));
+            mediaPlayer.Volume = 0.2;
+            mediaPlayer.Play();
+            mediaPlayer.IsMuted = false;
+        }
+
         private void saveButton(object sender, RoutedEventArgs e)
         {
-
+             Windows.Storage.ApplicationDataContainer localSettings =
+             Windows.Storage.ApplicationData.Current.LocalSettings;
+             Windows.Storage.StorageFolder localFolder =
+             Windows.Storage.ApplicationData.Current.LocalFolder;
+            Object xWinCount = localSettings.Values["xTotalWins"];
+            Object oWinCount = localSettings.Values["oTotalWins"];
+            Object drawCount = localSettings.Values["TotalDraws"];
+            
         }
-        private void muteButton(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
     }
+       
     }
+    
